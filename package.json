@@ -1,0 +1,31 @@
+{
+  "name": "cgi_efoliob",
+  "version": "1.0.0",
+  "description": "Efolio B de Computaçao Grafica",
+  "main": "index.js",
+  "scripts": {
+    "test": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloJMNicolau/cgi_efolioB.git"
+  },
+  "keywords": [
+    "ThreeJS",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Game",
+    "Space"
+  ],
+  "author": "Paulo Nicolau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PauloJMNicolau/cgi_efolioB/issues"
+  },
+  "homepage": "https://github.com/PauloJMNicolau/cgi_efolioB#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "three": "^0.123.0"
+  }
+}
