@@ -18,15 +18,15 @@ export function createSpaceship(){
 function createAsas(){
     const asas = new THREE.Group();                                                                             //Cria um grupo para as asas
     asas.add(createAsa({x:70,y:150,z:50}, {x:0,y:0,z:0}));                                                      //Cria a asa Direita e luzes
-    asas.add(createLuzAsa(0x197D1B,{x:70,y:80,z:58},{x:Math.PI/2, y:0,z:0}));
-    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:70,y:79,z:58},{x:70,y:70,z:58}))
-    asas.add(createLuzAsa(0x197D1B,{x:85,y:80,z:58},{x:Math.PI/2, y:0,z:0}));
-    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:85,y:79,z:58},{x:85,y:70,z:58}))
+    asas.add(createLuzAsa(0x197D1B,{x:70,y:100,z:50},{x:Math.PI/2, y:0,z:0}));
+    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:70,y:100,z:50},{x:70,y:70,z:50}))
+    asas.add(createLuzAsa(0x197D1B,{x:85,y:100,z:50},{x:Math.PI/2, y:0,z:0}));
+    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:85,y:100,z:50},{x:85,y:70,z:50}))
     asas.add(createAsa({x:-70,y:150,z:50}, {x:0,y:0,z:0}));                                                     //Cria a asa Esquerda e luzes
-    asas.add(createLuzAsa(0x197D1B,{x:-70,y:80,z:58},{x:Math.PI/2, y:0,z:0}));
-    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:-70,y:79,z:58},{x:-70,y:70,z:58}))
-    asas.add(createLuzAsa(0x197D1B,{x:-85,y:80,z:58},{x:Math.PI/2, y:0,z:0}));
-    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:-85,y:79,z:58},{x:-85,y:70,z:58}))
+    asas.add(createLuzAsa(0x197D1B,{x:-70,y:100,z:50},{x:Math.PI/2, y:0,z:0}));
+    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:-70,y:100,z:50},{x:-70,y:70,z:50}))
+    asas.add(createLuzAsa(0x197D1B,{x:-85,y:100,z:50},{x:Math.PI/2, y:0,z:0}));
+    asas.add(Luzes.createLightAsa(0x197D1B,0.2,{x:-85,y:100,z:50},{x:-85,y:70,z:50}))
     return asas;
 }
 

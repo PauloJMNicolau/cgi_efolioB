@@ -5,7 +5,7 @@ import * as Luzes from './iluminacao.js'
 //Cria o ambiente onde os objetos irão ser visualizados
 export function createSpace(){
     const fundo = createSpacePlano({x:0,y:1500,z:0},{x:Math.PI/2,y:0,z:0});                                            //Cria o fundo do ambiente
-    const base = createSpacePlano({x:0,y:-1500,z:0},{x:0,y:0,z:0});                                                //Cria a base do ambiente
+    const base = createSpacePlano({x:0,y:0,z:0},{x:0,y:0,z:0});                                                //Cria a base do ambiente
     const ladoE = createSpacePlano({x:-1500,y:0,z:0},{x:0,y:Math.PI/2,z:0});                                           //Cria o lado esquerdo do ambiente
     const ladoD = createSpacePlano({x:1500,y:0,z:0},{x:0,y:-(Math.PI/2),z:0});                                           //Cria o lado direito do ambiente
     const topo = createSpacePlano({x:0,y:1500,z:1500},{x:0,y:Math.PI,z:0});                                         //Cria o lado direito do ambiente
