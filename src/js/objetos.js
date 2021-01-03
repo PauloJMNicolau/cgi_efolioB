@@ -64,7 +64,7 @@ function createCameraMini(){
         canvasMini.clientHeight / 2,
         canvasMini.clientHeight / -2,
         1,
-        1500
+        3000
     );
     camera.aspepect= canvasMini.clientWidth / canvasMini.clientHeight;
     camera.position.x=0;                                                                                //Define a posição x,y,z onde a câmara vai ser colocada

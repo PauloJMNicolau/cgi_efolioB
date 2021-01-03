@@ -14,6 +14,9 @@ export function createNave(){
 //Cria a asa do Inimigo
 function createAsa(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal2.jpg');                            //Loader para a textura
+    texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
+    texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
+    texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     const geometria = new THREE.ConeGeometry(40,30,4);                                              //Geometria da Asa
     const material = new THREE.MeshPhongMaterial({                                                  //Material da Estrutura
         color: 0xffffff,                                                                                //Cor base
@@ -47,6 +50,9 @@ function createCorpo(){
 //Criar a parte da frente da nave
 function createCorpoF(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal2.jpg');                            //Loader para a textura
+    texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
+    texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
+    texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     const geometria = new THREE.ConeGeometry(20,10,8);                                              //Geometria das estrutura lateral - frente
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                                 //Cor Base
@@ -70,6 +76,9 @@ function createCorpoF(posicao,rotacao){
 //Criar a parte central da nave
 function createCorpoC(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal2.jpg');                            //Loader para a textura
+    texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
+    texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
+    texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     const geometria = new THREE.CylinderGeometry(20,20,100,8,8);                                    //Geometria das estrutura lateral - centro
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                             //Cor Base
