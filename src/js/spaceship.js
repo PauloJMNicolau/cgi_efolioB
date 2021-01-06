@@ -11,7 +11,7 @@ export function createSpaceship(posicao){
     nave.add(createAsas());                                                                                     //Cria e adiciona as asas da nave
     nave.add(createArmas());                                                                                    //Cria e adiciona as armas na nave
     nave.add(Luzes.createLightCockpit(0xDB9A37,2,{x:0,y:120,z:85}))                                             //Cria Luz de cockpit e adiciona
-    nave.name="Nave";
+    nave.name="Nave";                                                                                           //Atribui um nome e tipo ao grupo
     nave.type="Nave";
     nave.position.x= posicao.x;
     nave.position.y= posicao.y;
@@ -160,15 +160,15 @@ function createCorpo(posicao,rotacao){
 
 //Cria o cockpit da nave
 function createCockpit(posicao, rotacao){
-    const geometria = new THREE.SphereBufferGeometry(25,6,5,0,Math.PI*2.0,0,Math.PI*0.5);                    //Geometria da estrutura do cockpit
-    const material = new THREE.MeshPhongMaterial({                                                     //Material da estrutura do cockpit
+    const geometria = new THREE.SphereBufferGeometry(25,6,5,0,Math.PI*2.0,0,Math.PI*0.5);               //Geometria da estrutura do cockpit
+    const material = new THREE.MeshPhongMaterial({                                                      //Material da estrutura do cockpit
         color: 0x99CEFF,                                                                                    //Cor base
         shininess: 150,                                                                                     //Intensidade de Brilho
         side: THREE.FrontSide,                                                                              //Renderiza apenas um lado
         transparent: true,                                                                                  //Transparencia
         opacity: 0.4                                                                                        //Opacidade
     });
-    const cockpit= new THREE.Mesh(geometria,material);                                                 //Cockpit da Nave
+    const cockpit= new THREE.Mesh(geometria,material);                                                  //Cockpit da Nave
     cockpit.position.y=posicao.y;                                                                       //Posiciona elemento na posição 
     cockpit.position.x=posicao.x;
     cockpit.position.z=posicao.z;
@@ -176,6 +176,7 @@ function createCockpit(posicao, rotacao){
     cockpit.rotation.y= rotacao.y;
     cockpit.rotation.z= rotacao.z;
     cockpit.castShadow = true;                                                                          //Gerar Sombras
+    cockpit.receiveShadow=false;                                                                        //Não recebe sombras
     return cockpit;
 }
 
@@ -272,11 +273,11 @@ function createLateralF(posicao,rotacao){
     texture.wrapT = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Vertical
     texture.repeat.set(5,5);                                                                        //Quantidade de repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
-    const geometria = new THREE.ConeBufferGeometry(20,10,8);                                              //Geometria das estrutura lateral - frente
+    const geometria = new THREE.ConeBufferGeometry(20,10,8);                                        //Geometria das estrutura lateral - frente
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
-        color:0xffffff,                                                                             //Cor Base
-        side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
-        map: texture                                                                                //Textura a aplicar
+        color:0xffffff,                                                                                 //Cor Base
+        side: THREE.FrontSide,                                                                          //Renderiza apenas um lado
+        map: texture                                                                                    //Textura a aplicar
     }); 
     const estrutura = new THREE.Mesh(geometria,material);                                           //Cria o objeto
     estrutura.rotation.x= rotacao.x;                                                                //Roda o objeto
@@ -293,27 +294,27 @@ function createLateralF(posicao,rotacao){
 //Cria o Motor da Nave
 function createMotor(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal4.jpg');                            //Loader para a textura
-    const geometria = new THREE.CylinderBufferGeometry(20,10,15,8,8);                                     //Geometria das estrutura do motor
+    const geometria = new THREE.CylinderBufferGeometry(20,10,15,8,8);                               //Geometria das estrutura do motor
     texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
     const material = [                                                                              //Material para a estrutura
-        new THREE.MeshPhongMaterial({                                                               //Lateral da estrutura
-            color:0xeee2f6,                                                                            //Cor Base
-            side: THREE.FrontSide,                                                                     //Renderiza apenas um lado
-            map: texture                                                                               //Textura a aplicar
+        new THREE.MeshPhongMaterial({                                                                   //Lateral da estrutura
+            color:0xeee2f6,                                                                                 //Cor Base
+            side: THREE.FrontSide,                                                                          //Renderiza apenas um lado
+            map: texture                                                                                    //Textura a aplicar
         }),
-        new THREE.MeshPhongMaterial({                                                               //Topo da estrutura
-            color:0xeee2f6,                                                                             //Cor Base
-            side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
-            map: texture                                                                                //Textura a aplicar
+        new THREE.MeshPhongMaterial({                                                                   //Topo da estrutura
+            color:0xeee2f6,                                                                                 //Cor Base
+            side: THREE.FrontSide,                                                                          //Renderiza apenas um lado
+            map: texture                                                                                    //Textura a aplicar
         }),
-        new THREE.MeshPhongMaterial({                                                               //Base da estrutura
-            color:0xf5a935,                                                                             //Cor Base
-            side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
-            map: texture,                                                                               //Textura a aplicar
-            emissive: 0xf5a935                                                                          //Cor que emite
+        new THREE.MeshPhongMaterial({                                                                   //Base da estrutura
+            color:0xf5a935,                                                                                 //Cor Base
+            side: THREE.FrontSide,                                                                          //Renderiza apenas um lado
+            map: texture,                                                                                   //Textura a aplicar
+            emissive: 0xf5a935                                                                              //Cor que emite
         })
     ];
     const estrutura = new THREE.Mesh(geometria,material);                                           //Cria o objeto
@@ -330,11 +331,11 @@ function createMotor(posicao,rotacao){
 
 //Cria o Fogo do Motor
 function createFogo(posicao,rotacao, cor, tamanho){
-    const geometria = new THREE.SphereBufferGeometry(tamanho,32,32);                                 //Geometria da estrutura
+    const geometria = new THREE.SphereBufferGeometry(tamanho,32,32);                            //Geometria da estrutura
     const material = new THREE.PointsMaterial({                                                 //Material a aplicar
-        color: cor,                                                                            //Cor base
+        color: cor,                                                                                 //Cor base
         size: 1.5,                                                                                  //Tamanho                                                                              //Textura a aplicar
-        sizeAttenuation: false                                                                       //Atenuar      
+        sizeAttenuation: true                                                                       //Atenuar      
     });
     const fogo= new THREE.Points(geometria,material);
     fogo.rotation.x= rotacao.x;                                                                //Roda o objeto

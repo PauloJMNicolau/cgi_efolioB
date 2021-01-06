@@ -20,5 +20,35 @@ body{
 }
 
 span{
-    color:rgba(255,255,255, 1)
+    color:rgba(255,255,255, 1);
+    font-weight: bold;
 }
+
+
+#vida{
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    width: 15%;
+    color:rgba(255,255,255, 1);
+    font-size: 3rem;
+}
+
+#ponto{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 15%;
+    color:rgba(255,255,255, 1);
+    font-size: 3rem;
+}
+
+#gameover{
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    color:rgba(255,0,0, 1);
+    font-size: 5rem;
+    visibility:hidden;
+}
+
