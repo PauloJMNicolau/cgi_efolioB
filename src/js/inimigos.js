@@ -2,14 +2,35 @@
 import * as CENA from './objetos.js'
 import * as THREE from './three.module.js'
 import * as Luzes from './iluminacao.js'
-
+/* 
+const geometryAsa = new THREE.BufferGeometry().fromGeometry(new THREE.ConeBufferGeometry(40,30,4));
+const geometryCorpoF = new THREE.BufferGeometry().fromGeometry(new THREE.ConeBufferGeometry(20,10,8));
+const geometryCorpoC = new THREE.BufferGeometry().fromGeometry(new THREE.CylinderBufferGeometry(20,20,100,8,8));
+const geometryMotor = new THREE.BufferGeometry().fromGeometry(new THREE.CylinderBufferGeometry(20,10,15,8,8)); 
+*/
 //Cria a Nave Inimiga
 export function createNave(posicao){
     const nave = new THREE.Group();                                                                     //Cria um grupo para os elementods da nave
     nave.add(createCorpo({x:0, y:0, z:50}));                                                                            //Cria e adiciona um corpo da nave
     nave.add(createAsa({x:0, y:80, z:50},{x:0,y:Math.PI,z:Math.PI}))
-    nave.position.set(posicao);
-    CENA.cena.scene.add(nave);                                                                          //Adiciona na cena
+    nave.position.x= posicao.x;
+    nave.position.y= posicao.y;
+    nave.position.z= posicao.z;
+    nave.name="Inimigo";
+    nave.type="Inimigo";
+    CENA.adicionarObjeto(nave);                                                                        //Adiciona na cena
+}
+
+export function removerInimigo(objeto){
+    let numero = Math.round(Math.random()*400);
+    let negativo = Math.random()*2;
+    if(negativo<1){
+        numero *= -1;
+    }
+    let posicao = {x:numero, y:1500, z:50}
+    objeto.position.x=posicao.x;
+    objeto.position.y=posicao.y;
+    objeto.position.z=posicao.z;
 }
 
 //Cria a asa do Inimigo
@@ -19,7 +40,8 @@ function createAsa(posicao,rotacao){
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
-    const geometria = new THREE.ConeGeometry(40,30,4);                                              //Geometria da Asa
+    //const geometria = geometryAsa.clone()
+    const geometria = new THREE.ConeBufferGeometry(40,30,4);                                              //Geometria da Asa
     const material = new THREE.MeshPhongMaterial({                                                  //Material da Estrutura
         color: 0xffffff,                                                                                //Cor base
         side: THREE.FrontSide,                                                                          //Ren deriza apenas um lado
@@ -56,7 +78,8 @@ function createCorpoF(posicao,rotacao){
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
-    const geometria = new THREE.ConeGeometry(20,10,8);                                              //Geometria das estrutura lateral - frente
+    //const geometria = geometryCorpoF.clone();
+    const geometria = new THREE.ConeBufferGeometry(20,10,8);                                              //Geometria das estrutura lateral - frente
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                                 //Cor Base
         side: THREE.FrontSide,                                                                          //Renderiza apenas um lado
@@ -83,7 +106,8 @@ function createCorpoC(posicao,rotacao){
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
-    const geometria = new THREE.CylinderGeometry(20,20,100,8,8);                                    //Geometria das estrutura lateral - centro
+    //const geometria = geometryCorpoC.clone();
+    const geometria = new THREE.CylinderBufferGeometry(20,20,100,8,8);                                    //Geometria das estrutura lateral - centro
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                             //Cor Base
         side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
@@ -104,7 +128,8 @@ function createCorpoC(posicao,rotacao){
 //Criar o motor da nave
 function createMotor(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal4.jpg');                            //Loader para a textura
-    const geometria = new THREE.CylinderGeometry(20,10,15,8,8);                                     //Geometria das estrutura do motor
+    //const geometria = geometryMotor.clone();
+    const geometria = new THREE.CylinderBufferGeometry(20,10,15,8,8);                                     //Geometria das estrutura do motor
     texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
@@ -141,13 +166,11 @@ function createMotor(posicao,rotacao){
 
 //Cria o Fogo do Motor
 function createFogo(posicao,rotacao, cor, tamanho){
-    const textura = new THREE.TextureLoader().load('images/chama.jpg');                         //Textura a aplicar
     const geometria = new THREE.SphereBufferGeometry(tamanho,32,32);                            //Geometria da estrutura
     const material = new THREE.PointsMaterial({                                                 //Material a aplicar
         color: cor,                                                                            //Cor base
         size: 1.5,                                                                                  //Tamanho
-        map: textura,                                                                               //Textura a aplicar
-        sizeAttenuation: true                                                                       //Atenuar      
+        sizeAttenuation: false                                                                       //Atenuar      
     });
     const fogo= new THREE.Points(geometria,material);
     fogo.rotation.x= rotacao.x;                                                                //Roda o objeto

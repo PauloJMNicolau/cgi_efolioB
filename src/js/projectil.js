@@ -4,89 +4,47 @@ import * as THREE from './three.module.js'
 
 export function createProjectil(posicao){
     const projectil = new THREE.Group();
-    projectil.add(criarProjectil({x:posicao.x-85, y:posicao.y+250, z:posicao.z},{x:0,y:0,z:0}));
-    projectil.add(criarProjectil({x:posicao.x+85, y:posicao.y+250, z:posicao.z},{x:0,y:0,z:0}));
+    projectil.add(criarProjectil({x:-85, y:250, z:50},{x:0,y:0,z:0}));
+    projectil.add(criarProjectil({x:85, y:250, z:50},{x:0,y:0,z:0}));
+    projectil.position.x= posicao.x;
+    projectil.position.y= posicao.y;
+    projectil.position.z= posicao.z;
     projectil.type="Disparo"
     projectil.name="Disparo"
     CENA.adicionarObjeto(projectil);
 }
 
+//Criar Explosões
 export function createExplosion(posicao){
     const explosao = new THREE.Group();
-        explosao.add(createExplosao(100,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(100,3, 0x003d84, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(100,3, 0xec0000, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(100,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(100,3, 0x003d84, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(100,3, 0xec0000, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(90,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(90,3, 0xffa823, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(90,3, 0xec009b, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(90,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(90,3, 0xffa823, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(90,3, 0xec009b, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(80,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(80,3, 0x003d84, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(80,3, 0xec0000, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(80,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(80,3, 0x003d84, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(80,3, 0xec0000, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(70,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(70,3, 0xffa823, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(70,3, 0xec009b, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(70,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(70,3, 0xffa823, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(70,3, 0xec009b, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(60,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(60,3, 0x003d84, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(60,3, 0xec0000, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(60,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(60,3, 0x003d84, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(60,3, 0xec0000, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(50,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(50,3, 0xffa823, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(50,3, 0xec009b, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(50,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(50,3, 0xffa823, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(50,3, 0xec009b, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(40,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(40,3, 0x003d84, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(40,3, 0xec0000, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(40,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(40,3, 0x003d84, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(40,3, 0xec0000, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(30,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(30,3, 0xffa823, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(30,3, 0xec009b, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(30,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(30,3, 0xffa823, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(30,3, 0xec009b, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(20,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(20,3, 0x003d84, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(20,3, 0xec0000, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(20,3, 0xff6f2f, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(20,3, 0x003d84, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(20,3, 0xec0000, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
-        explosao.add(createExplosao(10,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(10,3, 0xffa823, posicao,{x:Math.PI/4,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(10,3, 0xec009b, posicao,{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
-        explosao.add(createExplosao(10,3, 0x23ffb1, posicao,{x:0,y:0,z:0}))
-        explosao.add(createExplosao(10,3, 0xffa823, posicao,{x:Math.PI/2,y:Math.PI/4,z:0}))
-        explosao.add(createExplosao(10,3, 0xec009b, posicao,{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
+        explosao.add(createExplosao(100,3, 0xff6f2f, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(100,3, 0x003d84, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(100,3, 0xec0000, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
+        explosao.add(createExplosao(100,3, 0xff6f2f, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(100,3, 0x003d84, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(100,3, 0xec0000, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
+        explosao.add(createExplosao(90,3, 0x23ffb1, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(90,3, 0xffa823, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(90,3, 0xec009b, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
+        explosao.add(createExplosao(90,3, 0x23ffb1, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(90,3, 0xffa823, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(90,3, 0xec009b, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
+        explosao.add(createExplosao(80,3, 0xff6f2f, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(80,3, 0x003d84, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(80,3, 0xec0000, {x:0,y:0,z:50},{x:Math.PI/4,y:Math.PI/4,z:Math.PI/4}))
+        explosao.add(createExplosao(80,3, 0xff6f2f, {x:0,y:0,z:50},{x:0,y:0,z:0}))
+        explosao.add(createExplosao(80,3, 0x003d84, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:0}))
+        explosao.add(createExplosao(80,3, 0xec0000, {x:0,y:0,z:50},{x:Math.PI/2,y:Math.PI/4,z:Math.PI/2}))
         explosao.type="Explosão";
         explosao.name="Explosão";
+        explosao.position.x += posicao.x;
+        explosao.position.y += posicao.y;
+        explosao.position.z += posicao.z;
     CENA.adicionarObjeto(explosao);
 }
 
-//Apagar a explosão da cena
-export function apagarExplosao(objeto){
-    CENA.removerObjeto(objeto);
-    for(let i = objeto.children.length-1; i==0;i--){
-        objeto.children[i].material.dispose();
-    }
-}
-
-export function removerDisparo(objeto){
+//Remover Objetos
+export function removerProjetil(objeto){
     CENA.removerObjeto(objeto);
     for(let i = objeto.children.length-1; i==0;i--){
         objeto.children[i].material.dispose();
@@ -106,29 +64,21 @@ export function escalarExplosao(objeto){
 
 //Cria os projectil da Nave
 function criarProjectil(posicao,rotacao){
-    const texture = new THREE.TextureLoader().load('images/laser.jpg');                             //Loader para a textura
-    const geometria = new THREE.CylinderGeometry(3,3,50,20,20);                                     //Geometria das estrutura do motor
-    texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
-    texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
-    texture.repeat.set(30,30);                                                                      //Quantidade de Repetições
-    texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
+    const geometria = new THREE.CylinderBufferGeometry(3,3,30,5,5);                                     //Geometria das estrutura do motor
     const material = [                                                                              //Material para a estrutura
-        new THREE.MeshPhongMaterial({                                                               //Lateral da estrutura
+        new THREE.MeshLambertMaterial({                                                               //Lateral da estrutura
             color:0xff002e,                                                                            //Cor Base
             side: THREE.FrontSide,                                                                     //Renderiza apenas um lado
-            map: texture,                                                                              //Textura a aplicar
-            emissive: 0xff002e                                                                          //Cor que emite
+            //emissive: 0xff002e                                                                          //Cor que emite
         }),
-        new THREE.MeshPhongMaterial({                                                               //Topo da estrutura
+        new THREE.MeshLambertMaterial({                                                               //Topo da estrutura
             color:0xff002e,                                                                             //Cor Base
             side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
-            map: texture,                                                                               //Textura a aplicar
-            emissive: 0xff002e                                                                          //Cor que emite
+            //emissive: 0xff002e                                                                          //Cor que emite
         }),
-        new THREE.MeshPhongMaterial({                                                               //Base da estrutura
+        new THREE.MeshLambertMaterial({                                                               //Base da estrutura
             color:0xff002e,                                                                             //Cor Base
             side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
-            map: texture,                                                                               //Textura a aplicar
             emissive: 0xff002e                                                                          //Cor que emite
         })
     ];
@@ -146,12 +96,12 @@ function criarProjectil(posicao,rotacao){
 
 //Cria Explosão{
 function createExplosao(tamanho, detalhe, cor, posicao,rotacao){
-    const geometria = new THREE.TetrahedronGeometry(tamanho,detalhe);                               //Geometria das estrutura do motor
+    const geometria = new THREE.TetrahedronBufferGeometry(tamanho,detalhe);                               //Geometria das estrutura do motor
     const material =                                                                             //Material para a estrutura
         new THREE.PointsMaterial({                                                               //Lateral da estrutura
             color:cor,                                                                                  //Cor Base
-            size: 10,                                                                                 //Tamanho
-            sizeAttenuation: true
+            size: 3,                                                                                 //Tamanho
+            sizeAttenuation: false
         });
     const estrutura = new THREE.Points(geometria,material);                                           //Cria o objeto
     estrutura.rotation.x= rotacao.x;                                                                //Roda o objeto

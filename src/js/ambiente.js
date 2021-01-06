@@ -20,7 +20,7 @@ export function createSpace(){
 
 //Cria o Plano que será adicionado na cena
 function createSpacePlano(posicao, rotacao){
-    const geometria = new THREE.PlaneGeometry(3000,3000,100);                                                   //Cria o plano do ambiente
+    const geometria = new THREE.PlaneBufferGeometry(3000,3000,100);                                                   //Cria o plano do ambiente
     const textura = new THREE.TextureLoader().load('images/space2.jpg'); 
     const material = new THREE.MeshBasicMaterial({                                                              //Cria o material com as propriedades
         color: 0xffffff,                                                                                        //cor base
