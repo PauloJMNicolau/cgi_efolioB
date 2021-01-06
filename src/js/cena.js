@@ -138,8 +138,8 @@ function moverInimigo(){
             let ponto = document.getElementById("Vidas").innerHTML;         //Vai obter valor das vidas restantes
             if(Number(ponto)-1 ==0)                                         //Verifica se vidas Terminaram
                 createGameOver();                                           //e em caso positivo mostra "Game Over" ao utilizador
-            else
-                document.getElementById("Vidas").innerHTML = Number(ponto)-1;   //Reduz uma vida ao utilizador
+            if(Number(ponto)-1>=0)
+                document.getElementById("Vidas").innerHTML = Number(ponto)-1;   //Reduz o valor das vidas restantes
         }
     }
 }
@@ -164,7 +164,7 @@ function moverAstro(){
             let ponto = document.getElementById("Vidas").innerHTML;         //Obtem o valor das vidas restantes
             if(Number(ponto)-1 ==0)                                         //Verifica se existem mais vidas
                 createGameOver();                                           //Mostra "Game Over" ao utilizador
-            else
+            if(Number(ponto)-1>=0)
                 document.getElementById("Vidas").innerHTML = Number(ponto)-1;   //Reduz o valor das vidas restantes
         }
     }
