@@ -1,3 +1,4 @@
+//Objetos e funções comuns aos restantes modulos
 import * as THREE from './three.module.js'
 
 //Objeto Canvas do HTML

@@ -1,3 +1,4 @@
+//Modulo Principal da aplicação
 import * as Spaceship from './spaceship.js'
 import * as Ambiente from './ambiente.js'
 import * as THREE from './three.module.js'
@@ -36,11 +37,11 @@ async function criarExplosao(posicao){
 
 //Cria os Inimigos
 async function criarInimigo(){
-    for(let i=0; i<2; i++){
+    for(let i=0; i<5; i++){
         let numero = CENA.gerarPosicao();                               //Gerar Posição Aleatória
         let posicao = {x:numero, y:1500, z: 50}                         //Define a posição final
         Inimigos.createNave(posicao);                                   //Cria a nave Inimiga
-        await sleep(2000)                                               //Aguarda um tempo até gerar proximo elemento                                               
+        await sleep(4000)                                               //Aguarda um tempo até gerar proximo elemento                                               
     }
 }
 

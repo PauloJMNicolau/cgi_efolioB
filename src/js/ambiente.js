@@ -1,3 +1,4 @@
+//Modulo do código do cenário onde os objetos se movimentam
 import * as CENA from './objetos.js'
 import * as THREE from './three.module.js'
 import * as Luzes from './iluminacao.js'

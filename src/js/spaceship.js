@@ -10,7 +10,7 @@ export function createSpaceship(posicao){
     nave.add(createLaterais());                                                                                 //Cria e adiciona as laterais e motores da nave
     nave.add(createAsas());                                                                                     //Cria e adiciona as asas da nave
     nave.add(createArmas());                                                                                    //Cria e adiciona as armas na nave
-    nave.add(Luzes.createLightCockpit(0xDB9A37,2,{x:0,y:120,z:85}))                                             //Cria Luz de cockpit e adiciona
+    nave.add(Luzes.createLightCockpit(0xDB9A37,0.6,{x:0,y:120,z:85}))                                             //Cria Luz de cockpit e adiciona
     nave.name="Nave";                                                                                           //Atribui um nome e tipo ao grupo
     nave.type="Nave";
     nave.position.x= posicao.x;
@@ -113,7 +113,7 @@ function createCorpo(posicao,rotacao){
     textura.wrapT = THREE.RepeatWrapping;                                                                   //Define tipo de Repetição de Textura 2 Vertical
     textura.repeat.set(10,10);                                                                              //Quantidade de Repetições
     textura.magFilter = THREE.LinearFilter;                                                                 //Tipo de Filtro da Textura
-    const geometria = new THREE.BoxBufferGeometry(100,230,25);                                                   //Geometria da parte central da nave
+    const geometria = new THREE.BoxGeometry(100,230,25);                                                   //Geometria da parte central da nave
     const material = [                                                                                      //Material da parte central da nave e asas
         new THREE.MeshPhongMaterial({                                                                       //Faces do Cubo                                 
             color: 0xEEE2F5,                                                                                    //Cor base
@@ -195,7 +195,7 @@ function createArma(posicao, rotacao){
     texture.wrapT = THREE.RepeatWrapping;                                                       //Define tipo de Repetição de Textura 2 Vertical
     texture.repeat.set(5,5);                                                                    //Quantidade de repetições
     texture.magFilter = THREE.LinearFilter;                                                     //Tipo de Filtro da Textura
-    const geometria = new THREE.CylinderBufferGeometry(3,5,30,8,8);                                   //Cria a estrutura da arma
+    const geometria = new THREE.CylinderGeometry(3,5,30,8,8);                                   //Cria a estrutura da arma
     const material = [
         new THREE.MeshPhongMaterial({                                                           //Cria o material da arma
             color: 0xcccccc,                                                                        //Cor base
@@ -248,7 +248,7 @@ function createLateralC(posicao,rotacao){
     texture.wrapT = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Vertical
     texture.repeat.set(5,5);                                                                        //Quantidade de repetições
     texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
-    const geometria = new THREE.CylinderBufferGeometry(20,20,250,8,8);                                    //Geometria das estrutura lateral - centro
+    const geometria = new THREE.CylinderGeometry(20,20,250,8,8);                                    //Geometria das estrutura lateral - centro
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                             //Cor Base
         side: THREE.FrontSide,                                                                      //Renderiza apenas um lado
@@ -294,7 +294,7 @@ function createLateralF(posicao,rotacao){
 //Cria o Motor da Nave
 function createMotor(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal4.jpg');                            //Loader para a textura
-    const geometria = new THREE.CylinderBufferGeometry(20,10,15,8,8);                               //Geometria das estrutura do motor
+    const geometria = new THREE.CylinderGeometry(20,10,15,8,8);                               //Geometria das estrutura do motor
     texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições

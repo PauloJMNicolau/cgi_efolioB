@@ -1,3 +1,4 @@
+//Modulo do código das Iluminaçóes da cena
 import * as CENA from './objetos.js'
 import * as THREE from './three.module.js'
 
