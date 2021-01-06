@@ -11,6 +11,8 @@ export function createSpaceship(){
     nave.add(createAsas());                                                                                     //Cria e adiciona as asas da nave
     nave.add(createArmas());                                                                                    //Cria e adiciona as armas na nave
     nave.add(Luzes.createLightCockpit(0xDB9A37,2,{x:0,y:120,z:85}))                                             //Cria Luz de cockpit e adiciona
+    nave.name="Nave";
+    nave.type="Nave";
     CENA.cena.scene.add(nave);                                                                                  //Adiciona na cena
 };
 
@@ -36,6 +38,7 @@ function createAsa(posicao, rotacao){
     textura.wrapS = THREE.RepeatWrapping;                                                                   //Define tipo de Repetição de Textura 2 Horizontal
     textura.wrapT = THREE.RepeatWrapping;                                                                   //Define tipo de Repetição de Textura 2 Vertical
     textura.repeat.set(20,10);                                                                              //Quantidade de Repetições
+    textura.magFilter = THREE.LinearFilter;                                                                 //Tipo de Filtro da Textura
     const geometria = new THREE.BoxGeometry(50,100,10);                                                     //Geometria das Asas
     const material = [                                                                                      //Material da parte central da nave e asas
         new THREE.MeshPhongMaterial({                                                                       //Faces do Cubo                                 
@@ -105,7 +108,8 @@ function createCorpo(posicao,rotacao){
     const textura = new THREE.TextureLoader().load('images/metal1.jpg');                                    //Textura a aplicar
     textura.wrapS = THREE.RepeatWrapping;                                                                   //Define tipo de Repetição de Textura 2 Horizontal
     textura.wrapT = THREE.RepeatWrapping;                                                                   //Define tipo de Repetição de Textura 2 Vertical
-    textura.repeat.set(10,10);  
+    textura.repeat.set(10,10);                                                                              //Quantidade de Repetições
+    textura.magFilter = THREE.LinearFilter;                                                                 //Tipo de Filtro da Textura
     const geometria = new THREE.BoxGeometry(100,230,25);                                                   //Geometria da parte central da nave
     const material = [                                                                                      //Material da parte central da nave e asas
         new THREE.MeshPhongMaterial({                                                                       //Faces do Cubo                                 
@@ -185,7 +189,8 @@ function createArma(posicao, rotacao){
     const texture = new THREE.TextureLoader().load('images/metal3.jpg');                        //Loader para a textura
     texture.wrapS = THREE.RepeatWrapping;                                                       //Define tipo de Repetição de Textura 2 Horizontal
     texture.wrapT = THREE.RepeatWrapping;                                                       //Define tipo de Repetição de Textura 2 Vertical
-    texture.repeat.set(5,5); 
+    texture.repeat.set(5,5);                                                                    //Quantidade de repetições
+    texture.magFilter = THREE.LinearFilter;                                                     //Tipo de Filtro da Textura
     const geometria = new THREE.CylinderGeometry(3,5,30,8,8);                                   //Cria a estrutura da arma
     const material = [
         new THREE.MeshPhongMaterial({                                                           //Cria o material da arma
@@ -235,6 +240,10 @@ function createLaterais(){
 //Cria a parte Central da Lateral
 function createLateralC(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal2.jpg');                            //Loader para a textura
+    texture.wrapS = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Horizontal
+    texture.wrapT = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Vertical
+    texture.repeat.set(5,5);                                                                        //Quantidade de repetições
+    texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
     const geometria = new THREE.CylinderGeometry(20,20,250,8,8);                                    //Geometria das estrutura lateral - centro
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                             //Cor Base
@@ -256,6 +265,10 @@ function createLateralC(posicao,rotacao){
 //Cria a Parte da Frente da Lateral
 function createLateralF(posicao,rotacao){
     const texture = new THREE.TextureLoader().load('images/metal2.jpg');                            //Loader para a textura
+    texture.wrapS = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Horizontal
+    texture.wrapT = THREE.RepeatWrapping;                                                           //Define tipo de Repetição de Textura 2 Vertical
+    texture.repeat.set(5,5);                                                                        //Quantidade de repetições
+    texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
     const geometria = new THREE.ConeGeometry(20,10,8);                                              //Geometria das estrutura lateral - frente
     const material = new THREE.MeshPhongMaterial({                                                  //Material para a estrutura
         color:0xffffff,                                                                             //Cor Base
@@ -281,6 +294,7 @@ function createMotor(posicao,rotacao){
     texture.WrapS = THREE.RepeatWrapping;                                                           //Repetição Horizontal
     texture.WrapT = THREE.RepeatWrapping;                                                           //Repetição Vertical
     texture.repeat.set(10,10);                                                                      //Quantidade de Repetições
+    texture.magFilter = THREE.LinearFilter;                                                         //Tipo de Filtro da Textura
     const material = [                                                                              //Material para a estrutura
         new THREE.MeshPhongMaterial({                                                               //Lateral da estrutura
             color:0xeee2f6,                                                                            //Cor Base
